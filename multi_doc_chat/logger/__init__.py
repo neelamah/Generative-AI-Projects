@@ -1,0 +1,4 @@
+# after adding __init__.py, the logger module can be imported in other files. now the logger module can be used to log messages in other parts of the codebase. 
+# This allows for better organization and separation of concerns, as the logging functionality is encapsulated within its own module. By importing the logger module, other files can utilize its functions to log messages, errors, or any relevant information without having to implement their own logging mechanism. 
+# This promotes code reusability and maintainability across the project.
+#example This folder is a Python package. we can import like this "import logger from multi_doc_chat.logger" in other files to use the logging functionality provided by the logger module.
