@@ -1,0 +1,28 @@
+Metadata-Version: 2.4
+Name: generative-ai-projects
+Version: 0.1.0
+Summary: Add your description here
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+Requires-Dist: docx2txt==0.9
+Requires-Dist: faiss-cpu>=1.14.2
+Requires-Dist: fastapi==0.115.6
+Requires-Dist: ipykernel==6.30.0
+Requires-Dist: jinja2==3.1.4
+Requires-Dist: langchain==0.3.27
+Requires-Dist: langchain-community==0.3.27
+Requires-Dist: langchain-core==0.3.72
+Requires-Dist: langchain-google-genai==2.1.8
+Requires-Dist: langchain-groq==0.3.6
+Requires-Dist: langchain-openai==0.2.10
+Requires-Dist: langsmith>=0.8.11
+Requires-Dist: openai>=1.109.1
+Requires-Dist: pandas>=3.0.3
+Requires-Dist: python-dotenv==1.1.1
+Requires-Dist: python-multipart==0.0.20
+Requires-Dist: setuptools>=82.0.1
+Requires-Dist: structlog>=26.1.0
+Requires-Dist: uvicorn==0.32.1
+
+# Generative-AI-Projects
+

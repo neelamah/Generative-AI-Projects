@@ -21,6 +21,8 @@ dependencies = [
     "pandas>=3.0.3",
     "python-dotenv==1.1.1",
     "python-multipart==0.0.20",
+    "setuptools>=82.0.1",
     "structlog>=26.1.0",
     "uvicorn==0.32.1",
 ]
+
