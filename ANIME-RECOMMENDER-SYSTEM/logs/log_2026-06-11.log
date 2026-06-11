@@ -1,0 +1,138 @@
+2026-06-11 18:15:22,504 - INFO - Starting to build pipeline...
+2026-06-11 18:15:22,504 - ERROR - Failed to execute pipeline Argument False is invalid for on_bad_lines
+2026-06-11 18:16:49,970 - INFO - Starting to build pipeline...
+2026-06-11 18:16:49,979 - ERROR - Failed to execute pipeline Missing required columns in the CSV file
+2026-06-11 18:18:51,414 - INFO - Starting to build pipeline...
+2026-06-11 18:18:51,421 - ERROR - Failed to execute pipeline Missing required columns in the CSV file
+2026-06-11 18:20:13,666 - INFO - Starting to build pipeline...
+2026-06-11 18:20:13,680 - INFO - Data  loaded and processed...
+2026-06-11 18:20:46,162 - INFO - Use pytorch device_name: mps
+2026-06-11 18:20:46,162 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-06-11 18:20:50,527 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-06-11 18:20:51,036 - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2026-06-11 18:20:51,052 - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2026-06-11 18:20:55,618 - INFO - Vector store Built sucesfully....
+2026-06-11 18:20:55,619 - INFO - Pipelien built sucesfuly....
+2026-06-11 19:06:05,530 - INFO - Intializing Recommdation Pipeline
+2026-06-11 19:06:32,151 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-06-11 19:06:33,769 - INFO - Use pytorch device_name: mps
+2026-06-11 19:06:35,968 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-06-11 19:06:36,469 - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2026-06-11 19:06:36,472 - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2026-06-11 19:06:36,724 - INFO - Pipleine intialized sucesfully...
+2026-06-11 19:11:22,649 - INFO - Intializing Recommdation Pipeline
+2026-06-11 19:11:22,652 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-06-11 19:11:23,671 - INFO - Use pytorch device_name: mps
+2026-06-11 19:11:23,962 - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2026-06-11 19:11:23,966 - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2026-06-11 19:11:23,989 - INFO - Pipleine intialized sucesfully...
+2026-06-11 19:11:23,990 - INFO - Recived a query light hearted anime with school settings
+2026-06-11 19:11:23,990 - ERROR - Failed to get recommendation 'AnimeRecommender' object has no attribute 'get_recommendation'
+2026-06-11 19:14:03,891 - INFO - Intializing Recommdation Pipeline
+2026-06-11 19:14:03,891 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-06-11 19:14:04,654 - INFO - Use pytorch device_name: mps
+2026-06-11 19:14:05,047 - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2026-06-11 19:14:05,052 - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2026-06-11 19:14:05,083 - INFO - Pipleine intialized sucesfully...
+2026-06-11 19:14:11,342 - INFO - Intializing Recommdation Pipeline
+2026-06-11 19:14:11,343 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-06-11 19:14:12,170 - INFO - Use pytorch device_name: mps
+2026-06-11 19:14:12,302 - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2026-06-11 19:14:12,303 - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2026-06-11 19:14:12,315 - INFO - Pipleine intialized sucesfully...
+2026-06-11 19:14:12,316 - INFO - Recived a query light hearted anime with school settings
+2026-06-11 19:14:12,316 - ERROR - Failed to get recommendation 'AnimeRecommender' object has no attribute 'generate_recommendation'
+2026-06-11 19:16:21,127 - INFO - Intializing Recommdation Pipeline
+2026-06-11 19:16:21,128 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-06-11 19:16:21,917 - INFO - Use pytorch device_name: mps
+2026-06-11 19:16:22,219 - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2026-06-11 19:16:22,220 - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2026-06-11 19:16:22,232 - INFO - Pipleine intialized sucesfully...
+2026-06-11 19:16:27,031 - INFO - Intializing Recommdation Pipeline
+2026-06-11 19:16:27,031 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-06-11 19:16:27,695 - INFO - Use pytorch device_name: mps
+2026-06-11 19:16:27,763 - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2026-06-11 19:16:27,764 - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2026-06-11 19:16:27,775 - INFO - Pipleine intialized sucesfully...
+2026-06-11 19:16:27,775 - INFO - Recived a query light hearted anime with school settings
+2026-06-11 19:16:27,775 - ERROR - Failed to get recommendation 'AnimeRecommender' object has no attribute 'self'
+2026-06-11 19:18:32,909 - INFO - Intializing Recommdation Pipeline
+2026-06-11 19:18:32,910 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-06-11 19:18:33,738 - INFO - Use pytorch device_name: mps
+2026-06-11 19:18:34,072 - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2026-06-11 19:18:34,077 - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2026-06-11 19:18:34,104 - INFO - Pipleine intialized sucesfully...
+2026-06-11 19:18:40,723 - INFO - Intializing Recommdation Pipeline
+2026-06-11 19:18:40,723 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-06-11 19:18:41,557 - INFO - Use pytorch device_name: mps
+2026-06-11 19:18:41,735 - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2026-06-11 19:18:41,737 - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2026-06-11 19:18:41,748 - INFO - Pipleine intialized sucesfully...
+2026-06-11 19:18:41,749 - INFO - Recived a query  light hearted anime with school settings
+2026-06-11 19:18:41,749 - ERROR - Failed to get recommendation `run` not supported when there is not exactly one output key. Got ['result', 'source_documents'].
+2026-06-11 19:20:47,133 - INFO - Intializing Recommdation Pipeline
+2026-06-11 19:20:47,134 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-06-11 19:20:48,063 - INFO - Use pytorch device_name: mps
+2026-06-11 19:20:48,402 - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2026-06-11 19:20:48,407 - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2026-06-11 19:20:48,433 - INFO - Pipleine intialized sucesfully...
+2026-06-11 19:20:54,118 - INFO - Intializing Recommdation Pipeline
+2026-06-11 19:20:54,120 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-06-11 19:20:54,920 - INFO - Use pytorch device_name: mps
+2026-06-11 19:20:55,079 - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2026-06-11 19:20:55,080 - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2026-06-11 19:20:55,091 - INFO - Pipleine intialized sucesfully...
+2026-06-11 19:20:55,092 - INFO - Recived a query light hearted anime with school settings
+2026-06-11 19:21:00,043 - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2026-06-11 19:21:01,222 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-11 19:21:01,254 - INFO - Recommendation generated sucesfulyy...
+2026-06-11 19:21:53,271 - INFO - Intializing Recommdation Pipeline
+2026-06-11 19:21:53,280 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-06-11 19:21:54,103 - INFO - Use pytorch device_name: mps
+2026-06-11 19:21:54,400 - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2026-06-11 19:21:54,403 - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2026-06-11 19:21:54,417 - INFO - Pipleine intialized sucesfully...
+2026-06-11 19:21:54,418 - INFO - Recived a query l want similar anime to 
+2026-06-11 19:21:56,315 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-11 19:21:56,322 - INFO - Recommendation generated sucesfulyy...
+2026-06-11 19:22:02,400 - INFO - Intializing Recommdation Pipeline
+2026-06-11 19:22:02,401 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-06-11 19:22:03,212 - INFO - Use pytorch device_name: mps
+2026-06-11 19:22:03,629 - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2026-06-11 19:22:03,635 - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2026-06-11 19:22:03,669 - INFO - Pipleine intialized sucesfully...
+2026-06-11 19:22:03,675 - INFO - Recived a query l want similar anime to  ble
+2026-06-11 19:22:05,378 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-11 19:22:05,388 - INFO - Recommendation generated sucesfulyy...
+2026-06-11 19:22:08,453 - INFO - Intializing Recommdation Pipeline
+2026-06-11 19:22:08,453 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-06-11 19:22:09,267 - INFO - Use pytorch device_name: mps
+2026-06-11 19:22:09,504 - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2026-06-11 19:22:09,505 - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2026-06-11 19:22:09,518 - INFO - Pipleine intialized sucesfully...
+2026-06-11 19:22:09,520 - INFO - Recived a query l want similar anime to  bleach
+2026-06-11 19:22:10,918 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-11 19:22:10,926 - INFO - Recommendation generated sucesfulyy...
+2026-06-11 19:25:06,646 - INFO - Intializing Recommdation Pipeline
+2026-06-11 19:25:06,646 - INFO - Intializing Recommdation Pipeline
+2026-06-11 19:25:12,735 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-06-11 19:25:12,735 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-06-11 19:25:13,809 - INFO - Use pytorch device_name: mps
+2026-06-11 19:25:13,915 - INFO - Use pytorch device_name: mps
+2026-06-11 19:25:15,168 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-06-11 19:25:15,229 - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2026-06-11 19:25:15,232 - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2026-06-11 19:25:15,234 - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2026-06-11 19:25:15,234 - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2026-06-11 19:25:15,339 - INFO - Pipleine intialized sucesfully...
+2026-06-11 19:25:15,339 - INFO - Pipleine intialized sucesfully...
+2026-06-11 19:25:22,051 - INFO - Intializing Recommdation Pipeline
+2026-06-11 19:25:22,052 - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-06-11 19:25:22,813 - INFO - Use pytorch device_name: mps
+2026-06-11 19:25:22,925 - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2026-06-11 19:25:22,926 - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2026-06-11 19:25:22,937 - INFO - Pipleine intialized sucesfully...
+2026-06-11 19:25:22,938 - INFO - Recived a query light hearted anime with school settings
+2026-06-11 19:25:24,060 - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2026-06-11 19:25:25,087 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-11 19:25:25,112 - INFO - Recommendation generated sucesfulyy...
