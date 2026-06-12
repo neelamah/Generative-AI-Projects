@@ -1,0 +1,6 @@
+venv/
+logs/
+anime_recommender_system.egg-info/
+.env
+
+#  this file is used which we don't want to push to github. 

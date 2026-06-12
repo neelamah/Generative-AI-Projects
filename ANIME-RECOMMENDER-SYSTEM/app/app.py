@@ -9,6 +9,10 @@ st.set_page_config(page_title="Anime Recommnder",layout="wide")
 
 load_dotenv()
 
+import os
+os.environ["TRANSFORMERS_NO_TF"] = "1"
+os.environ["TRANSFORMERS_NO_FLAX"] = "1"
+
 #here we are using st.cache_resource to cache the pipeline object so that it is not reloaded every time the user interacts with the app. 
 # This will improve the performance of the app by avoiding unnecessary reloading of the pipeline.
 # AnimeRecommendationPipeline class ->  we are ccalling this class to create an instance of the pipeline which will be used to generate recommendations based on user query.

@@ -1,0 +1,46 @@
+#is a deployment configuration file used to tell Kubernetes how to deploy your application on servers (nodes), not a server itself.
+#is a Kubernetes manifest file used to deploy an LLM application. It defines resources like Deployment, Service, replicas, and container image so Kubernetes can create pods, manage scaling, and expose the application in a cluster.
+#Kubernetes will:
+# 1.Create Pods (where your app runs)
+# 2.Put those pods on worker nodes (servers)
+# 3.Create Service (to expose your app)
+# 4.Keep everything running automatically
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: llmops-app
+  labels:
+    app: llmops
+spec:
+  replicas: 1 # You can increase this number for more instances of your app.  it is a setting in Kubernetes that controls how many identical copies of your application should run.
+  selector:
+    matchLabels:
+      app: llmops
+  template:
+    metadata:
+      labels:
+        app: llmops
+    spec:
+      containers:
+      - name: llmops-container
+        image: llmops-app:latest  # Use local image
+        imagePullPolicy: IfNotPresent # Use local image if available, otherwise pull from registry like Docker Hub or ECR.
+        ports:
+          - containerPort: 8501
+        envFrom:
+          - secretRef:
+              name: llmops-secrets  #we don't push env file. so we need to pass varibales. so inject these variables as secrets in kubernetes clusters and then we fetch using this line from kubernetes in our deployment file.
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: llmops-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: llmops
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8501

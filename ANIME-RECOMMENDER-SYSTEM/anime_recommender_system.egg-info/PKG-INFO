@@ -1,7 +1,7 @@
 Metadata-Version: 2.4
 Name: anime-recommender-system
 Version: 0.1.0
-Requires-Python: >=3.12
+Requires-Python: <3.12,>=3.10
 Requires-Dist: chromadb==0.5.5
 Requires-Dist: langchain==0.2.16
 Requires-Dist: langchain-community==0.2.16
@@ -12,4 +12,4 @@ Requires-Dist: python-dotenv==1.0.1
 Requires-Dist: streamlit==1.37.1
 Requires-Dist: sentence-transformers==2.7.0
 Requires-Dist: transformers==4.41.1
-Requires-Dist: torch
+Requires-Dist: torch>=2.2.0
