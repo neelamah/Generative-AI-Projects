@@ -1,0 +1,22 @@
+[project]
+name = "flipcart-product-recommender"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "datasets==2.20.0",
+    "flask==3.0.3",
+    "langchain==0.2.16",
+    "langchain-astradb==0.3.3",
+    "langchain-community==0.2.16",
+    "langchain-groq==0.1.9",
+    "langchain-huggingface==0.0.3",
+    "pandas==2.2.2",
+    "prometheus-client==0.20.0",
+    "pypdf==4.3.1",
+    "python-dotenv==1.0.1",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
