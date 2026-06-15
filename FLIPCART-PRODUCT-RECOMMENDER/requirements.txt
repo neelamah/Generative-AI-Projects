@@ -9,3 +9,4 @@ python-dotenv==1.0.1
 pandas==2.2.2
 flask==3.0.3
 prometheus_client==0.20.0
+huggingface-hub>=1.19.0

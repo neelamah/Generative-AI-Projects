@@ -1,9 +1,0 @@
-README.md
-pyproject.toml
-src/__init__.py
-src/config.py
-src/flipcart_product_recommender.egg-info/PKG-INFO
-src/flipcart_product_recommender.egg-info/SOURCES.txt
-src/flipcart_product_recommender.egg-info/dependency_links.txt
-src/flipcart_product_recommender.egg-info/requires.txt
-src/flipcart_product_recommender.egg-info/top_level.txt
