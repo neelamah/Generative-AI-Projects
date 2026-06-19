@@ -1,3 +1,5 @@
+# prepare data converetr to store in vstore
+
 import pandas as pd
 from langchain_core.documents import Document
 from langchain_community.document_loaders import CSVLoader
@@ -22,7 +24,7 @@ class DataConverter:
         #     for _, row in df.iterrows()
         # ]
       
-        print(documents)
+        # print(documents)
         return documents
     
 # we want to run this file directly, not as liberary

@@ -22,6 +22,7 @@ class DataIngestor:
         
     # inject data with database
     # load_existing=True reuse if it is exist.
+    # to create new vector store we need to change load_existing=galse
     def ingest(self,load_existing=True):
         if load_existing == True:
             self.vstore

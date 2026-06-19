@@ -1,0 +1,159 @@
+# Kubernetes API version for Deployment resource
+# apps/v1 is used for managing application deployments
+apiVersion: apps/v1
+
+# Resource type
+# Deployment manages Pods and ensures desired number of replicas are running
+kind: Deployment
+
+# Metadata contains information about the Deployment
+metadata:
+  # Name of the Deployment
+  name: flask-app
+
+  # Labels are key-value pairs used for identifying resources
+  labels:
+    app: flask
+
+# Deployment specification
+spec:
+
+  # Number of Pod replicas to run
+  # Kubernetes will maintain 1 running instance of Flask application
+  replicas: 1
+
+  # Defines which Pods this Deployment manages
+  selector:
+    matchLabels:
+      # Deployment manages Pods having label app=flask
+      app: flask
+
+  # Pod template definition
+  # Deployment creates Pods using this template
+  template:
+
+    # Metadata for Pods created by Deployment
+    metadata:
+      labels:
+        # Adds label app=flask to Pod
+        # Must match selector.matchLabels above
+        app: flask
+
+    # Pod specification
+    spec:
+
+      # List of containers inside the Pod
+      containers:
+
+      # Container configuration
+      - name: flask-container
+
+        # Docker image used to create the container
+        # Example: image built using docker build -t flask-app:latest .
+        image: flask-app:latest
+
+        # Pull image policy
+        # If image exists locally, use it
+        # Otherwise try to pull from registry
+        imagePullPolicy: IfNotPresent
+
+        # Container port where Flask application runs
+        ports:
+          - containerPort: 5001
+
+        # Load environment variables from Kubernetes Secrets
+        # Used for sensitive information like API keys, passwords, tokens
+        envFrom:
+
+          # Reference a Secret resource
+          - secretRef:
+
+              # Name of Kubernetes Secret containing environment variables
+              # Example:
+              # OPENAI_API_KEY=xxxx
+              # AWS_ACCESS_KEY=xxxx
+              name: llmops-secrets
+
+
+---
+# Separate Kubernetes resource
+# Service exposes the Flask application outside the cluster
+
+# Kubernetes API version for Service
+apiVersion: v1
+
+# Resource type
+kind: Service
+
+# Service metadata
+metadata:
+  
+  # Name of the Service
+  name: flask-service
+
+# Service configuration
+spec:
+
+  # Service type
+  # LoadBalancer creates an external IP/ELB in cloud environments like AWS EKS
+  type: LoadBalancer
+
+  # Routes traffic to Pods with this label
+  selector:
+    app: flask
+
+  # Port configuration
+  ports:
+
+    # Network protocol
+    - protocol: TCP
+
+      # External port exposed by Service
+      # Users access application on port 80
+      port: 80
+
+      # Internal container port where Flask listens
+      # Traffic is forwarded from port 80 -> 5000
+      targetPort: 5001
+
+
+
+
+#apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: flask-app
+#   labels:
+#     app: flask
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: flask
+#   template:
+#     metadata:
+#       labels:
+#         app: flask
+#     spec:
+#       containers:
+#       - name: flask-container
+#         image: flask-app:latest
+#         imagePullPolicy: IfNotPresent
+#         ports:
+#           - containerPort: 5000
+#         envFrom:
+#           - secretRef:
+#               name: llmops-secrets
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: flask-service
+# spec:
+#   type: LoadBalancer
+#   selector:
+#     app: flask
+#   ports:
+#     - protocol: TCP
+#       port: 80
+#       targetPort: 5000
