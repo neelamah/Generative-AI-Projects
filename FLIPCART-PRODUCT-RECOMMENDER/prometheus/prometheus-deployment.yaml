@@ -1,0 +1,80 @@
+# Deployment resource creates and manages Prometheus Pods
+apiVersion: apps/v1          # Kubernetes Deployment API version
+kind: Deployment             # Defines a Deployment resource
+
+metadata:
+  name: prometheus           # Deployment name
+  namespace: monitoring      # Deploy in monitoring namespace
+
+spec:
+  replicas: 1               # Run 1 Prometheus Pod
+
+  selector:
+    matchLabels:
+      app: prometheus       # Deployment manages Pods with this label
+
+  template:                 # Pod template
+    metadata:
+      labels:
+        app: prometheus     # Label assigned to Pod
+
+    spec:
+      containers:
+        - name: prometheus  # Container name
+
+          image: prom/prometheus
+          # Pull Prometheus image from Docker Hub
+
+          args:
+            - "--config.file=/etc/prometheus/prometheus.yml"
+            # Start Prometheus using configuration file
+            # mounted inside the container
+
+          ports:
+            - containerPort: 9090
+              # Prometheus listens on port 9090
+
+          volumeMounts:
+            - name: config-volume
+              mountPath: /etc/prometheus
+              # Mount ConfigMap contents at this path
+              # Prometheus reads prometheus.yml from here
+
+      volumes:
+        - name: config-volume
+          configMap:
+            name: prometheus-config
+            # Use ConfigMap named prometheus-config
+            # as a volume for configuration files
+
+---
+# Service exposes Prometheus Pod to the network
+
+apiVersion: v1              # Core Kubernetes API version
+kind: Service               # Service resource
+
+metadata:
+  name: prometheus-service  # Service name
+  namespace: monitoring     # Service created in monitoring namespace
+
+spec:
+  selector:
+    app: prometheus
+    # Service forwards traffic to Pods
+    # having label app=prometheus
+
+  ports:
+    - protocol: TCP
+      port: 9090
+      # Service port exposed inside cluster
+
+      targetPort: 9090
+      # Traffic forwarded to container port 9090
+
+      nodePort: 32001
+      # External port on worker node
+      # Access Prometheus using NodeIP:32001
+
+  type: NodePort
+  # Exposes application outside cluster
+  # through a static port on every node
