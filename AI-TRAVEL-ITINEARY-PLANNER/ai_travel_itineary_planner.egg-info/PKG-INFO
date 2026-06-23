@@ -1,0 +1,12 @@
+Metadata-Version: 2.4
+Name: ai-travel-itineary-planner
+Version: 0.1.0
+Summary: Add your description here
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+Requires-Dist: langchain==0.2.16
+Requires-Dist: langchain-community==0.2.16
+Requires-Dist: langchain-core==0.2.38
+Requires-Dist: langchain-groq==0.1.9
+Requires-Dist: python-dotenv==1.0.1
+Requires-Dist: streamlit==1.37.1
