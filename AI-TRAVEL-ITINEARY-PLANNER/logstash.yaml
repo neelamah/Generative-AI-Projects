@@ -1,0 +1,225 @@
+# ConfigMap containing the Logstash pipeline configuration
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: logstash-config
+  namespace: logging
+data:
+  logstash.conf: |
+    # Input plugins define where Logstash receives data from
+    input {
+      beats {
+        # Listen for Filebeat/Beats clients on port 5044
+        port => 5044
+      }
+    }
+
+    # Filter section is used to parse, enrich, or transform logs
+    # Examples:
+    # - grok for log parsing
+    # - mutate for field manipulation
+    # - date for timestamp conversion
+    filter {
+
+    }
+
+    # Output plugins define where processed logs are sent
+    output {
+      elasticsearch {
+        # Elasticsearch service endpoint
+        hosts => ["http://elasticsearch.logging.svc.cluster.local:9200"]
+
+        # Create daily indices
+        # Example:
+        # filebeat-2025.01.15
+        index => "filebeat-%{+YYYY.MM.dd}"
+      }
+    }
+
+---
+# Deploy Logstash as a Kubernetes Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: logstash
+  namespace: logging
+spec:
+  # Number of Logstash pods to run
+  replicas: 1
+
+  # Deployment manages pods matching this label
+  selector:
+    matchLabels:
+      app: logstash
+
+  template:
+    metadata:
+      labels:
+        app: logstash
+
+    spec:
+      containers:
+      - name: logstash
+
+        # Logstash 7.17 image
+        image: docker.elastic.co/logstash/logstash:7.17.0
+
+        ports:
+        # Beats input port (used by Filebeat)
+        - containerPort: 5044
+
+        # Logstash monitoring/API endpoint
+        - containerPort: 9600
+
+        volumeMounts:
+        # Mount pipeline configuration file from ConfigMap
+        - name: config-volume
+          mountPath: /usr/share/logstash/pipeline/logstash.conf
+          subPath: logstash.conf
+
+      volumes:
+      # Volume backed by ConfigMap
+      - name: config-volume
+        configMap:
+          name: logstash-config
+          items:
+          - key: logstash.conf
+            path: logstash.conf
+
+---
+# Internal Kubernetes Service exposing Logstash
+apiVersion: v1
+kind: Service
+metadata:
+  name: logstash
+  namespace: logging
+spec:
+  # Route traffic to pods with label app=logstash
+  selector:
+    app: logstash
+
+  ports:
+    - protocol: TCP
+
+      # Service port accessed by clients (Filebeat)
+      port: 5044
+
+      # Container port on Logstash pod
+      targetPort: 5044# PersistentVolumeClaim (PVC) used to store Elasticsearch data
+# Data remains available even if the Elasticsearch pod is restarted.
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: elasticsearch-pvc
+  namespace: logging
+spec:
+  # ReadWriteOnce means the volume can be mounted as read-write
+  # by a single node at a time.
+  accessModes:
+    - ReadWriteOnce
+
+  # Request 2 GiB of persistent storage
+  resources:
+    requests:
+      storage: 2Gi
+
+  # StorageClass used to dynamically provision storage
+  # Change this value if your cluster uses a different StorageClass.
+  storageClassName: standard
+
+---
+# Elasticsearch Deployment
+# Runs a single Elasticsearch node inside the logging namespace.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: elasticsearch
+  namespace: logging
+spec:
+  # Number of Elasticsearch pods
+  replicas: 1
+
+  # Deployment manages pods matching this label
+  selector:
+    matchLabels:
+      app: elasticsearch
+
+  template:
+    metadata:
+      labels:
+        app: elasticsearch
+
+    spec:
+      containers:
+        - name: elasticsearch
+
+          # Elasticsearch 7.17 container image
+          image: docker.elastic.co/elasticsearch/elasticsearch:7.17.0
+
+          env:
+            # Run Elasticsearch as a single-node cluster.
+            # Required when there is only one Elasticsearch instance.
+            - name: discovery.type
+              value: single-node
+
+            # JVM heap size settings.
+            # Initial heap = 512 MB
+            # Maximum heap = 512 MB
+            # Typically set heap size to ~50% of available container memory.
+            - name: ES_JAVA_OPTS
+              value: "-Xms512m -Xmx512m"
+
+            # Disable built-in X-Pack security.
+            # Suitable for development/testing environments.
+            # Enable security in production deployments.
+            - name: xpack.security.enabled
+              value: "false"
+
+          ports:
+            # Elasticsearch REST API endpoint
+            - containerPort: 9200
+
+          resources:
+            # Maximum resources Elasticsearch can use
+            limits:
+              memory: "2Gi"
+              cpu: "1"
+
+            # Guaranteed minimum resources
+            requests:
+              memory: "1Gi"
+              cpu: "500m"
+
+          volumeMounts:
+            # Mount persistent storage for Elasticsearch indices and metadata
+            - mountPath: /usr/share/elasticsearch/data
+              name: elasticsearch-storage
+
+      volumes:
+        # Attach the PersistentVolumeClaim to the pod
+        - name: elasticsearch-storage
+          persistentVolumeClaim:
+            claimName: elasticsearch-pvc
+
+---
+# Kubernetes Service exposing Elasticsearch
+# Other applications (Logstash, Kibana, etc.) use this service
+# to communicate with Elasticsearch.
+apiVersion: v1
+kind: Service
+metadata:
+  name: elasticsearch
+  namespace: logging
+spec:
+  # Forward traffic to pods with label app=elasticsearch
+  selector:
+    app: elasticsearch
+
+  ports:
+    - protocol: TCP
+
+      # Service port
+      port: 9200
+
+      # Elasticsearch container port
+      targetPort: 9200

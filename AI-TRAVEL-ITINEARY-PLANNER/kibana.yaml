@@ -1,0 +1,66 @@
+# Kibana Deployment
+# Kibana provides a web UI for searching, visualizing,
+# and analyzing data stored in Elasticsearch.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kibana
+  namespace: logging
+spec:
+  # Number of Kibana instances
+  replicas: 1
+
+  # Deployment manages pods matching this label
+  selector:
+    matchLabels:
+      app: kibana
+
+  template:
+    metadata:
+      labels:
+        app: kibana
+
+    spec:
+      containers:
+        - name: kibana
+
+          # Kibana 7.17 container image
+          # Version should generally match Elasticsearch version.
+          image: docker.elastic.co/kibana/kibana:7.17.0
+
+          env:
+            # Elasticsearch endpoint Kibana connects to.
+            # Uses the Kubernetes Service named "elasticsearch"
+            # in the same namespace.
+            - name: ELASTICSEARCH_HOSTS
+              value: http://elasticsearch:9200
+
+          ports:
+            # Kibana web interface port
+            - containerPort: 5601
+
+---
+# Kubernetes Service exposing Kibana
+# Allows users to access the Kibana web UI.
+apiVersion: v1
+kind: Service
+metadata:
+  name: kibana
+  namespace: logging
+spec:
+  # NodePort exposes Kibana on every Kubernetes node
+  # at the specified port (30601).
+  type: NodePort
+
+  # Route traffic to Kibana pods
+  selector:
+    app: kibana
+
+  ports:
+    # Service port inside the cluster
+    - port: 5601
+
+      # External port opened on each cluster node
+      # Access Kibana at:
+      # http://<node-ip>:30601
+      nodePort: 30601
