@@ -1,0 +1,8 @@
+README.md
+pyproject.toml
+src/__init__.py
+study_buddy_ai.egg-info/PKG-INFO
+study_buddy_ai.egg-info/SOURCES.txt
+study_buddy_ai.egg-info/dependency_links.txt
+study_buddy_ai.egg-info/requires.txt
+study_buddy_ai.egg-info/top_level.txt

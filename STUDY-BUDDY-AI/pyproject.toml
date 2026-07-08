@@ -1,0 +1,16 @@
+[project]
+name = "study-buddy-ai"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "langchain==0.2.16",
+    "langchain-groq==0.1.9",
+    "pandas==2.2.2",
+    "python-dotenv==1.0.1",
+    "streamlit==1.37.1",
+]
+
+[tool.setuptools]
+packages = ["src"]
